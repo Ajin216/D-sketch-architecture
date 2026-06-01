@@ -1,7 +1,7 @@
 <!-- Header Section -->
 <section class="py-24 sm:py-32 px-6 sm:px-8 bg-brand-cream border-b border-stone-100 select-none animate-fade-in-up">
   <div class="max-w-7xl mx-auto space-y-6 text-center">
-    <span class="font-sans text-xs tracking-[0.3em] font-medium text-accent-gold uppercase block">
+    <span class="inline-block font-sans text-xs sm:text-sm tracking-[0.4em] font-semibold text-accent-gold uppercase border-y border-accent-gold/25 py-2.5 px-6 mb-3 select-none">
       CURATED COMMISSION ARCHIVE
     </span>
     <h1 class="font-serif text-5xl sm:text-6xl text-brand-charcoal font-semibold max-w-3xl mx-auto leading-[1.1]">
@@ -56,27 +56,36 @@
 
       <div class="group flex flex-col {{ item.gridClass }} space-y-4 animate-fade-in-up">
 
-        <!-- Image Box -->
-        <div class="relative w-full {{ item.aspectClass }} overflow-hidden border border-stone-200 transition-all duration-500 group-hover:border-accent-gold">
+        <!-- Image Box (Zoom & Rotate interactive trigger) -->
+        <div (click)="openProject(item)" class="relative w-full {{ item.aspectClass }} overflow-hidden border border-stone-200 transition-all duration-500 group-hover:border-accent-gold cursor-pointer">
           <img [src]="item.imageUrl" [alt]="item.title" 
                class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
           <!-- Luxury corner highlights -->
           <span class="absolute top-0 right-0 w-4 h-4 border-t border-r border-accent-gold opacity-0 group-hover:opacity-60 transition-opacity duration-300"></span>
           <span class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-accent-gold opacity-0 group-hover:opacity-60 transition-opacity duration-300"></span>
+          
+          <!-- Hover Zoom Icon -->
+          <div class="absolute inset-0 bg-brand-charcoal/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+            <div class="w-11 h-11 rounded-full bg-brand-cream/95 shadow-md flex items-center justify-center transform scale-90 group-hover:scale-100 transition-transform duration-300">
+              <svg class="w-5 h-5 fill-none stroke-brand-charcoal" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+              </svg>
+            </div>
+          </div>
         </div>
 
         <!-- Description Footer -->
         <div class="flex items-start justify-between gap-4">
           <div class="space-y-1">
-            <h3
-              class="font-serif text-lg text-brand-charcoal group-hover:text-accent-gold transition-colors duration-300">
+            <h3 (click)="openProject(item)"
+              class="font-serif text-lg text-brand-charcoal hover:text-accent-gold cursor-pointer transition-colors duration-300">
               {{ item.title }}
             </h3>
             <p class="font-sans text-xs text-stone-400 tracking-wider font-light">
               {{ item.spec }}
             </p>
           </div>
-          <span class="text-[10px] tracking-widest font-sans text-stone-400 uppercase pt-1">
+          <span (click)="openProject(item)" class="text-[10px] tracking-widest font-sans text-stone-400 uppercase pt-1 cursor-pointer hover:text-accent-gold transition-colors duration-300">
             &rarr;
           </span>
         </div>
@@ -89,3 +98,100 @@
 
   </div>
 </section>
+
+<!-- Fullscreen Lightbox Modal (Zoom & Rotate) -->
+@if (activeProject()) {
+<div class="fixed inset-0 z-9999 flex items-center justify-center backdrop-blur-xl bg-brand-charcoal/95 p-4 sm:p-6 transition-opacity duration-300">
+  
+  <!-- Close Trigger Area -->
+  <div (click)="closeProject()" class="absolute inset-0 cursor-default"></div>
+
+  <!-- Modal Container -->
+  <div class="relative w-full max-w-5xl bg-brand-cream/5 border border-stone-800 shadow-2xl p-4 sm:p-6 z-10 flex flex-col space-y-6 animate-fade-in-up">
+    
+    <!-- Close Icon Button -->
+    <button (click)="closeProject()" class="absolute -top-12 right-0 sm:right-4 text-brand-cream/80 hover:text-accent-gold focus:outline-none transition-colors duration-300 p-2" aria-label="Close Lightbox">
+      <svg class="w-8 h-8 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Interactive Workspace Canvas -->
+    <div class="relative w-full aspect-[4/3] md:aspect-[16/10] bg-black/40 border border-stone-800 overflow-hidden flex items-center justify-center">
+      
+      <!-- Interactive Main Image -->
+      <img [src]="activeProject()?.imageUrl" [alt]="activeProject()?.title"
+           class="max-w-full max-h-full object-contain transition-all duration-300 ease-out select-none shadow-lg"
+           [style.transform]="'scale(' + scale() + ') rotate(' + rotation() + 'deg)'">
+
+    </div>
+
+    <!-- Interactive Floating Control Board -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pt-2 select-none">
+      <!-- Title & Details -->
+      <div class="text-center sm:text-left space-y-1">
+        <h2 class="font-serif text-2xl text-brand-cream font-medium">
+          {{ activeProject()?.title }}
+        </h2>
+        <p class="font-sans text-stone-400 text-xs tracking-wider font-light">
+          {{ activeProject()?.spec }} &middot; DIMENSIONS: {{ activeProject()?.dimensions }}
+        </p>
+      </div>
+
+      <!-- Controls Panel -->
+      <div class="flex items-center space-x-3.5">
+        <!-- Rotate Left Button -->
+        <button (click)="rotateLeft()" 
+                class="w-10 h-10 border border-stone-700 bg-brand-charcoal/80 hover:border-accent-gold text-brand-cream hover:text-accent-gold flex items-center justify-center transition-colors duration-300 focus:outline-none cursor-pointer"
+                title="Rotate Left 90°">
+          <svg class="w-5 h-5 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 15l-6 5m0 0l-5-6m5 6V9a6 6 0 0112 0v3" />
+          </svg>
+        </button>
+
+        <!-- Rotate Right Button -->
+        <button (click)="rotateRight()" 
+                class="w-10 h-10 border border-stone-700 bg-brand-charcoal/80 hover:border-accent-gold text-brand-cream hover:text-accent-gold flex items-center justify-center transition-colors duration-300 focus:outline-none cursor-pointer"
+                title="Rotate Right 90°">
+          <svg class="w-5 h-5 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 15l6 5m0 0l5-6m-5 6V9a6 6 0 00-12 0v3" />
+          </svg>
+        </button>
+
+        <span class="w-px h-6 bg-stone-850"></span>
+
+        <!-- Zoom Out Button -->
+        <button (click)="zoomOut()" [disabled]="scale() <= 0.5"
+                class="w-10 h-10 border border-stone-700 bg-brand-charcoal/80 hover:border-accent-gold text-brand-cream hover:text-accent-gold disabled:opacity-40 disabled:hover:text-brand-cream disabled:hover:border-stone-700 flex items-center justify-center transition-colors duration-300 focus:outline-none cursor-pointer"
+                title="Zoom Out">
+          <svg class="w-5 h-5 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 10H7" />
+          </svg>
+        </button>
+
+        <!-- Zoom level indicator -->
+        <span class="font-sans text-[10px] tracking-widest text-stone-400 w-12 text-center">
+          {{ getPercent() }}%
+        </span>
+
+        <!-- Zoom In Button -->
+        <button (click)="zoomIn()" [disabled]="scale() >= 3"
+                class="w-10 h-10 border border-stone-700 bg-brand-charcoal/80 hover:border-accent-gold text-brand-cream hover:text-accent-gold disabled:opacity-40 disabled:hover:text-brand-cream disabled:hover:border-stone-700 flex items-center justify-center transition-colors duration-300 focus:outline-none cursor-pointer"
+                title="Zoom In">
+          <svg class="w-5 h-5 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+          </svg>
+        </button>
+
+        <!-- Reset Button -->
+        <button (click)="resetTransforms()" 
+                class="font-sans text-[10px] tracking-[0.2em] font-medium border border-stone-700 bg-brand-charcoal/80 hover:border-accent-gold text-brand-cream hover:text-accent-gold py-3 px-4 transition-colors duration-300 focus:outline-none cursor-pointer"
+                title="Reset Size & Rotation">
+          RESET
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+}

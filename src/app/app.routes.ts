@@ -12,9 +12,19 @@ export const routes: Routes = [
     title: 'D sketch architecture | Services'
   },
   {
+    path: 'about',
+    loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent),
+    title: 'D sketch architecture | About Us'
+  },
+  {
     path: 'gallery',
     loadComponent: () => import('./pages/gallery/gallery.component').then(m => m.GalleryComponent),
     title: 'D sketch architecture | Gallery'
+  },
+  {
+    path: 'videos',
+    loadComponent: () => import('./pages/videos/videos.component').then(m => m.VideosComponent),
+    title: 'D sketch architecture | Videos'
   },
   {
     path: 'contact',

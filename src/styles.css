@@ -7,8 +7,29 @@
   --color-brand-charcoal: #121212;
   --color-brand-cream: #FCFAF7;
   
-  --font-serif: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, Cambria, "Times New Roman", Times, serif;
   --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  
+  /* Upscaled font sizes for premium luxury visibility and superior readability */
+  --font-size-xs: 0.875rem;        /* 14px (formerly 13px) */
+  --font-size-sm: 1.03125rem;     /* 16.5px (formerly 15px) */
+  --font-size-base: 1.125rem;      /* 18px (formerly 17px) */
+  --font-size-lg: 1.3125rem;       /* 21px (formerly 20px) */
+  --font-size-xl: 1.5rem;          /* 24px (formerly 23px) */
+  --font-size-2xl: 1.875rem;       /* 30px (formerly 27px) */
+  --font-size-3xl: 2.25rem;        /* 36px (formerly 34px) */
+  --font-size-4xl: 2.75rem;        /* 44px (formerly 40px) */
+  --font-size-5xl: 3.5rem;         /* 56px (formerly 52px) */
+  --font-size-6xl: 4.5rem;         /* 72px (formerly 66px) */
+  --font-size-7xl: 5.5rem;         /* 88px (formerly 80px) */
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-brand-cream);
+  color: var(--color-brand-charcoal);
+  font-size: var(--font-size-base);
+  line-height: 1.75;
 }
 
 @layer utilities {
