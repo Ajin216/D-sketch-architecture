@@ -20,46 +20,6 @@ interface GalleryItem {
 })
 export class GalleryComponent {
   selectedFilter = signal<'all' | 'residential' | 'commercial' | 'bespoke'>('all');
-  
-  // Interactive Lightbox State
-  activeProject = signal<GalleryItem | null>(null);
-  scale = signal<number>(1);
-  rotation = signal<number>(0);
-
-  openProject(project: GalleryItem) {
-    this.activeProject.set(project);
-    this.scale.set(1);
-    this.rotation.set(0);
-  }
-
-  closeProject() {
-    this.activeProject.set(null);
-  }
-
-  zoomIn() {
-    this.scale.update(s => Math.min(s + 0.25, 3));
-  }
-
-  zoomOut() {
-    this.scale.update(s => Math.max(s - 0.25, 0.5));
-  }
-
-  rotateRight() {
-    this.rotation.update(r => (r + 90) % 360);
-  }
-
-  rotateLeft() {
-    this.rotation.update(r => (r - 90) % 360);
-  }
-
-  resetTransforms() {
-    this.scale.set(1);
-    this.rotation.set(0);
-  }
-
-  getPercent() {
-    return Math.round(this.scale() * 100);
-  }
 
   projects = signal<GalleryItem[]>([
     {
