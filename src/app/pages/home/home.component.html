@@ -1,0 +1,216 @@
+<section class="relative min-h-[90vh] bg-brand-charcoal overflow-hidden select-none animate-fade-in-up">
+  
+  <!-- Full-Width Slides Canvas -->
+  <div class="absolute inset-0 w-full h-full">
+    @for (slide of slides; track slide.url; let idx = $index) {
+      <div class="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out animate-fade-in"
+           [class.opacity-100]="activeSlide() === idx"
+           [class.opacity-0]="activeSlide() !== idx"
+           [class.z-10]="activeSlide() === idx"
+           [class.z-0]="activeSlide() !== idx">
+        <img [src]="slide.url" [alt]="slide.title" 
+             class="w-full h-full object-cover">
+        <!-- Soft dark overlay for extreme contrast and premium readability -->
+        <div class="absolute inset-0 bg-brand-charcoal/45"></div>
+      </div>
+    }
+  </div>
+
+  <!-- Immersive Centered Content Overlay -->
+  <div class="relative z-20 max-w-7xl mx-auto px-6 sm:px-8 min-h-[90vh] flex flex-col justify-center items-center text-center space-y-8">
+    <div class="space-y-4 max-w-3xl">
+      <span class="font-sans text-xs tracking-[0.3em] font-medium text-accent-gold uppercase block">
+        INTERIOR DESIGN & ARCHITECTURE
+      </span>
+      <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl text-brand-cream leading-[1.1] font-semibold">
+        Purity in Form.<br />
+        <span class="italic font-normal">Silence</span> in Space.
+      </h1>
+    </div>
+
+    <p class="font-sans text-stone-200 text-base sm:text-lg font-light leading-relaxed max-w-2xl">
+      D sketch architecture creates timeless, highly curated minimalist environments. We combine architectural purity
+      with custom luxury craftsmanship to transform premium residential and commercial spaces.
+    </p>
+
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row items-center gap-4 pt-4 w-full sm:w-auto">
+      <a routerLink="/gallery"
+        class="w-full sm:w-auto font-sans text-xs tracking-[0.2em] font-medium text-center text-brand-charcoal bg-brand-cream hover:bg-accent-gold hover:text-brand-charcoal py-4.5 px-10 transition-colors duration-300">
+        OUR WORKS
+      </a>
+      <a routerLink="/contact"
+        class="w-full sm:w-auto font-sans text-xs tracking-[0.2em] font-medium text-center text-brand-cream border border-brand-cream/30 hover:border-brand-cream hover:bg-brand-cream hover:text-brand-charcoal py-4.5 px-10 transition-all duration-300">
+        OUR SERVICES
+      </a>
+    </div>
+  </div>
+
+  <!-- Navigation Indicator Dots -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
+    @for (slide of slides; track slide.url; let idx = $index) {
+      <button (click)="setSlide(idx)" 
+              class="w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer"
+              [class.bg-accent-gold]="activeSlide() === idx"
+              [class.scale-125]="activeSlide() === idx"
+              [class.bg-white/40]="activeSlide() !== idx"
+              [class.hover:bg-white/70]="activeSlide() !== idx">
+      </button>
+    }
+  </div>
+
+  <!-- Decorative Corner Accents -->
+  <span class="absolute top-8 right-8 w-12 h-12 border-t border-r border-accent-gold/45 z-20 pointer-events-none"></span>
+  <span class="absolute bottom-8 left-8 w-12 h-12 border-b border-l border-accent-gold/45 z-20 pointer-events-none"></span>
+</section>
+
+<!-- Section 2: Philosophy Manifesto -->
+<section class="bg-white border-y border-stone-100 py-24 sm:py-32 px-6 sm:px-8">
+  <div class="max-w-4xl mx-auto text-center space-y-12">
+    <span class="font-sans text-xs tracking-[0.3em] font-medium text-accent-gold uppercase block">
+      OUR MANIFESTO
+    </span>
+    <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-brand-charcoal font-light leading-snug">
+      “We believe that simplicity is the ultimate expression of custom sophistication. Every line must serve a purpose,
+      and every empty space must breathe.”
+    </h2>
+    <div class="w-12 h-0.5 bg-accent-gold mx-auto"></div>
+    <p class="font-sans text-stone-500 text-base leading-relaxed font-light max-w-2xl mx-auto">
+      Our design philosophy is anchored in a monochromatic palette, natural textures, and meticulous spatial alignments.
+      We bypass superficial trends to deliver architectural monuments that define tranquil, custom-crafted luxury.
+    </p>
+  </div>
+</section>
+
+<!-- Section 3: Curated Works -->
+<section class="py-24 sm:py-32 px-6 sm:px-8 bg-brand-cream">
+  <div class="max-w-7xl mx-auto space-y-16">
+
+    <!-- Title Area -->
+    <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
+      <div class="space-y-4">
+        <span class="font-sans text-xs tracking-[0.3em] font-medium text-accent-gold uppercase block">
+          COMMISSION PREVIEWS
+        </span>
+        <h2 class="font-serif text-4xl sm:text-5xl text-brand-charcoal font-semibold">
+          Curated Portfolios
+        </h2>
+      </div>
+      <a routerLink="/gallery"
+        class="font-sans text-xs tracking-[0.2em] font-medium text-brand-charcoal hover:text-accent-gold border-b border-brand-charcoal/20 hover:border-accent-gold pb-1 transition-all duration-300">
+        VIEW ALL PROJECTS &rarr;
+      </a>
+    </div>
+
+    <!-- 3-Column Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <!-- Card 1 -->
+      <div class="group cursor-pointer space-y-5">
+        <div
+          class="relative w-full aspect-[4/5] overflow-hidden border border-stone-200 transition-all duration-500 group-hover:border-accent-gold">
+          <img src="/images/minimalistLake.webp" alt="Minimalist Lake Villa"
+            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+        </div>
+        <div class="space-y-1">
+          <h3
+            class="font-serif text-xl text-brand-charcoal group-hover:text-accent-gold transition-colors duration-300">
+            Minimalist Lake Villa
+          </h3>
+          <p class="font-sans text-xs text-stone-400 tracking-wider font-light">
+            LUGANO, SWITZERLAND &bull; 2025
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="group cursor-pointer space-y-5">
+        <div
+          class="relative w-full aspect-[4/5] overflow-hidden border border-stone-200 transition-all duration-500 group-hover:border-accent-gold">
+          <img src="/images/auragGallary.webp" alt="Aura Curation Gallery"
+            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+        </div>
+        <div class="space-y-1">
+          <h3
+            class="font-serif text-xl text-brand-charcoal group-hover:text-accent-gold transition-colors duration-300">
+            Aura Curation Gallery
+          </h3>
+          <p class="font-sans text-xs text-stone-400 tracking-wider font-light">
+            GENEVA, SWITZERLAND &bull; 2024
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="group cursor-pointer space-y-5">
+        <div
+          class="relative w-full aspect-[4/5] overflow-hidden border border-stone-200 transition-all duration-500 group-hover:border-accent-gold">
+          <img src="/images/monolith concrete.webp" alt="Monolith Concrete Pavilion"
+            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+        </div>
+        <div class="space-y-1">
+          <h3
+            class="font-serif text-xl text-brand-charcoal group-hover:text-accent-gold transition-colors duration-300">
+            Monolith Concrete Pavilion
+          </h3>
+          <p class="font-sans text-xs text-stone-400 tracking-wider font-light">
+            ZURICH, SWITZERLAND &bull; 2025
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Section 4: Accolades / Testimonials -->
+<section class="py-24 sm:py-32 px-6 sm:px-8 bg-white border-t border-stone-100">
+  <div class="max-w-7xl mx-auto space-y-16">
+    <div class="text-center space-y-4">
+      <span class="font-sans text-xs tracking-[0.3em] font-medium text-accent-gold uppercase block">
+        ACCOLADES
+      </span>
+      <h2 class="font-serif text-4xl sm:text-5xl text-brand-charcoal font-semibold">
+        Client Accolades
+      </h2>
+    </div>
+
+    <!-- Testimonial Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 sm:gap-16 pt-8 max-w-5xl mx-auto">
+
+      <!-- Testimonial 1 -->
+      <div class="space-y-6 md:pr-8 md:border-r border-stone-100">
+        <p class="font-serif text-lg italic text-stone-600 leading-relaxed">
+          “D sketch architecture has elevated our lake villa into a sanctuary of peaceful luxury. The negative spaces
+          are perfectly orchestrated, and the level of precision in custom carpentry details is outstanding.”
+        </p>
+        <div class="space-y-1">
+          <h4 class="font-sans text-xs tracking-widest text-brand-charcoal font-semibold uppercase">
+            HANS & ELAINE WEBER
+          </h4>
+          <span class="font-sans text-[10px] tracking-widest text-stone-400 uppercase font-light">
+            LUGANO ESTATE COMMISSIONS
+          </span>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="space-y-6 md:pl-8">
+        <p class="font-serif text-lg italic text-stone-600 leading-relaxed">
+          “Their control over monochromatic tones is masterful. They designed our Basel modern art boutique, creating a
+          beautiful spatial choreography that perfectly frames our collections without ever competing with them.”
+        </p>
+        <div class="space-y-1">
+          <h4 class="font-sans text-xs tracking-widest text-brand-charcoal font-semibold uppercase">
+            VALERIE LEROY
+          </h4>
+          <span class="font-sans text-[10px] tracking-widest text-stone-400 uppercase font-light">
+            DIRECTOR, GALERIE AURA
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

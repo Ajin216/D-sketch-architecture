@@ -1,0 +1,91 @@
+<!-- Header Section -->
+<section class="py-24 sm:py-32 px-6 sm:px-8 bg-brand-cream border-b border-stone-100 select-none animate-fade-in-up">
+  <div class="max-w-7xl mx-auto space-y-6 text-center">
+    <span class="font-sans text-xs tracking-[0.3em] font-medium text-accent-gold uppercase block">
+      CURATED COMMISSION ARCHIVE
+    </span>
+    <h1 class="font-serif text-5xl sm:text-6xl text-brand-charcoal font-semibold max-w-3xl mx-auto leading-[1.1]">
+      Selected Works Portfolio
+    </h1>
+    <div class="w-12 h-0.5 bg-accent-gold mx-auto my-6"></div>
+
+    <!-- Dynamic Text Filters -->
+    <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 pt-6">
+      <button (click)="setFilter('all')"
+        class="font-sans text-xs tracking-[0.20em] font-medium py-2 border-b-2 transition-all duration-300 focus:outline-none"
+        [class.text-accent-gold]="selectedFilter() === 'all'" [class.border-accent-gold]="selectedFilter() === 'all'"
+        [class.text-stone-400]="selectedFilter() !== 'all'" [class.border-transparent]="selectedFilter() !== 'all'">
+        ALL COMMISSIONS
+      </button>
+      <button (click)="setFilter('residential')"
+        class="font-sans text-xs tracking-[0.20em] font-medium py-2 border-b-2 transition-all duration-300 focus:outline-none"
+        [class.text-accent-gold]="selectedFilter() === 'residential'"
+        [class.border-accent-gold]="selectedFilter() === 'residential'"
+        [class.text-stone-400]="selectedFilter() !== 'residential'"
+        [class.border-transparent]="selectedFilter() !== 'residential'">
+        RESIDENTIAL
+      </button>
+      <button (click)="setFilter('commercial')"
+        class="font-sans text-xs tracking-[0.20em] font-medium py-2 border-b-2 transition-all duration-300 focus:outline-none"
+        [class.text-accent-gold]="selectedFilter() === 'commercial'"
+        [class.border-accent-gold]="selectedFilter() === 'commercial'"
+        [class.text-stone-400]="selectedFilter() !== 'commercial'"
+        [class.border-transparent]="selectedFilter() !== 'commercial'">
+        COMMERCIAL
+      </button>
+      <button (click)="setFilter('bespoke')"
+        class="font-sans text-xs tracking-[0.20em] font-medium py-2 border-b-2 transition-all duration-300 focus:outline-none"
+        [class.text-accent-gold]="selectedFilter() === 'bespoke'"
+        [class.border-accent-gold]="selectedFilter() === 'bespoke'"
+        [class.text-stone-400]="selectedFilter() !== 'bespoke'"
+        [class.border-transparent]="selectedFilter() !== 'bespoke'">
+        BESPOKE CURATION
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Grid -->
+<section class="py-16 sm:py-24 px-6 sm:px-8 bg-white">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Grid Wrapper using asymmetrical row densities -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 auto-rows-dense">
+
+      @for (item of filteredProjects(); track item.id) {
+
+      <div class="group flex flex-col {{ item.gridClass }} space-y-4 animate-fade-in-up">
+
+        <!-- Image Box -->
+        <div class="relative w-full {{ item.aspectClass }} overflow-hidden border border-stone-200 transition-all duration-500 group-hover:border-accent-gold">
+          <img [src]="item.imageUrl" [alt]="item.title" 
+               class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+          <!-- Luxury corner highlights -->
+          <span class="absolute top-0 right-0 w-4 h-4 border-t border-r border-accent-gold opacity-0 group-hover:opacity-60 transition-opacity duration-300"></span>
+          <span class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-accent-gold opacity-0 group-hover:opacity-60 transition-opacity duration-300"></span>
+        </div>
+
+        <!-- Description Footer -->
+        <div class="flex items-start justify-between gap-4">
+          <div class="space-y-1">
+            <h3
+              class="font-serif text-lg text-brand-charcoal group-hover:text-accent-gold transition-colors duration-300">
+              {{ item.title }}
+            </h3>
+            <p class="font-sans text-xs text-stone-400 tracking-wider font-light">
+              {{ item.spec }}
+            </p>
+          </div>
+          <span class="text-[10px] tracking-widest font-sans text-stone-400 uppercase pt-1">
+            &rarr;
+          </span>
+        </div>
+
+      </div>
+
+      }
+
+    </div>
+
+  </div>
+</section>

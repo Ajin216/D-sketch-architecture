@@ -1,0 +1,63 @@
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md bg-brand-cream/80 border-b border-stone-200/40">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 h-20 flex items-center justify-between">
+    <!-- Brand Logo -->
+    <a routerLink="/" (click)="closeMobileMenu()" class="group flex items-center space-x-3 focus:outline-none">
+      <span class="font-serif text-2xl tracking-widest text-brand-charcoal font-semibold relative transition-colors duration-300 group-hover:text-accent-gold">
+        D SKETCH
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-gold transition-all duration-300 group-hover:w-full"></span>
+      </span>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="hidden md:flex items-center space-x-10">
+      <a routerLink="/" routerLinkActive="text-accent-gold border-accent-gold" [routerLinkActiveOptions]="{exact: true}" 
+         class="font-sans text-xs tracking-[0.2em] font-medium text-brand-charcoal/70 hover:text-accent-gold border-b-2 border-transparent py-2 transition-all duration-300">
+        HOME
+      </a>
+      <a routerLink="/services" routerLinkActive="text-accent-gold border-accent-gold"
+         class="font-sans text-xs tracking-[0.2em] font-medium text-brand-charcoal/70 hover:text-accent-gold border-b-2 border-transparent py-2 transition-all duration-300">
+        SERVICES
+      </a>
+      <a routerLink="/gallery" routerLinkActive="text-accent-gold border-accent-gold"
+         class="font-sans text-xs tracking-[0.2em] font-medium text-brand-charcoal/70 hover:text-accent-gold border-b-2 border-transparent py-2 transition-all duration-300">
+        GALLERY
+      </a>
+      <a routerLink="/contact" routerLinkActive="bg-accent-gold text-brand-cream border-accent-gold"
+         class="font-sans text-xs tracking-[0.2em] font-medium text-brand-charcoal px-5 py-2.5 border border-brand-charcoal/20 hover:bg-brand-charcoal hover:text-brand-cream hover:border-brand-charcoal transition-all duration-300 rounded-none">
+        CONTACT US
+      </a>
+    </nav>
+
+    <!-- Mobile Hamburger Toggle -->
+    <button (click)="toggleMobileMenu()" class="md:hidden p-2 text-brand-charcoal focus:outline-none" aria-label="Toggle Navigation">
+      <div class="w-6 h-5 relative flex flex-col justify-between">
+        <span class="w-full h-0.5 bg-brand-charcoal transition-all duration-300" [ngClass]="{'transform rotate-45 translate-y-2': isMobileMenuOpen()}"></span>
+        <span class="w-full h-0.5 bg-brand-charcoal transition-all duration-300" [ngClass]="{'opacity-0': isMobileMenuOpen()}"></span>
+        <span class="w-full h-0.5 bg-brand-charcoal transition-all duration-300" [ngClass]="{'transform -rotate-45 -translate-y-2': isMobileMenuOpen()}"></span>
+      </div>
+    </button>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div class="md:hidden overflow-hidden transition-all duration-500 ease-in-out border-b border-stone-200/40 bg-brand-cream"
+       [ngClass]="{'max-h-screen opacity-100 py-6': isMobileMenuOpen(), 'max-h-0 opacity-0 py-0': !isMobileMenuOpen()}">
+    <div class="px-6 flex flex-col space-y-5">
+      <a routerLink="/" routerLinkActive="text-accent-gold" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()"
+         class="font-sans text-sm tracking-[0.2em] font-medium text-brand-charcoal/80 py-1 block">
+        HOME
+      </a>
+      <a routerLink="/services" routerLinkActive="text-accent-gold" (click)="closeMobileMenu()"
+         class="font-sans text-sm tracking-[0.2em] font-medium text-brand-charcoal/80 py-1 block">
+        SERVICES
+      </a>
+      <a routerLink="/gallery" routerLinkActive="text-accent-gold" (click)="closeMobileMenu()"
+         class="font-sans text-sm tracking-[0.2em] font-medium text-brand-charcoal/80 py-1 block">
+        GALLERY
+      </a>
+      <a routerLink="/contact" routerLinkActive="bg-accent-gold text-brand-cream border-accent-gold" (click)="closeMobileMenu()"
+         class="font-sans text-xs tracking-[0.2em] font-medium text-brand-charcoal py-3 px-4 border border-brand-charcoal/20 hover:bg-brand-charcoal hover:text-brand-cream text-center block transition-all duration-300 rounded-none">
+        CONTACT US
+      </a>
+    </div>
+  </div>
+</header>
