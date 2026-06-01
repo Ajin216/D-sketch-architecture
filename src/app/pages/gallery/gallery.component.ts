@@ -40,7 +40,7 @@ export class GalleryComponent {
       aspectClass: 'aspect-[4/3] md:aspect-square',
       spec: 'Zurich, CH - 2024',
       dimensions: '400x400',
-      imageUrl: '/images/minimalPendhhouse-converted-from-png.webp',
+      imageUrl: '/images/firstimage.webp',
     },
     {
       id: 3,
@@ -60,7 +60,7 @@ export class GalleryComponent {
       aspectClass: 'aspect-[4/3] md:aspect-square',
       spec: 'Bespoke Curation - 2025',
       dimensions: '400x400',
-      imageUrl: '/images/stoneTable-converted-from-png.webp',
+      imageUrl: '/images/lightCoreography4.webp',
     },
     {
       id: 5,

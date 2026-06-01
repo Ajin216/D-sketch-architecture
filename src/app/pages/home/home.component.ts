@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   
   slides = [
     { url: '/images/custom1.webp', title: 'Architectural Space Curation' },
-    { url: '/images/minimalPendhhouse-converted-from-png.webp', title: 'Minimalist Architecture Concept' },
+    { url: '/images/auraCreation.webp', title: 'Minimalist Architecture Concept' },
     { url: '/images/interior2.webp', title: 'High-End Bespoke Curation' }
   ];
 

@@ -34,7 +34,7 @@ export class VideosComponent {
       title: 'Zurich Minimalist Penthouse',
       category: 'Interior Walkthrough',
       duration: '03:15',
-      thumbnailUrl: '/images/minimalPendhhouse-converted-from-png.webp',
+      thumbnailUrl: '/images/firstimage.webp',
       videoUrl: '/videos/AQMZvqTUooQJ9FCou0Qa2jbuoYXwYIaoEyiH7Luu08d_df38AoLRt4agcE0SAwsPJuWdQ1JOzKOLfbHr_xbxrPRjx40ZVWtX.mp4',
       description: 'Reviewing bespoke structural partitions, textured oak floorboards, and floating solid concrete platforms in our premium city duplex commission.'
     },
@@ -70,7 +70,7 @@ export class VideosComponent {
       title: 'Stone Monolith Geometry',
       category: 'Industrial Geometry',
       duration: '00:45',
-      thumbnailUrl: '/images/stoneTable-converted-from-png.webp',
+      thumbnailUrl: '/images/lightCoreography4.webp',
       videoUrl: '/videos/AQPSIVSe-lh1N5d9qgFvkHFf-PmYI8VosTBKKIZDDglc4VNLaMFfzI5Gy7tasZrJ3DGz9c2fPGRgXaRfNX9QToFC-LMif7tl.mp4',
       description: 'Highlighting raw material custom builds, handcrafted travertine stone edges, and minimalist tabletop visual balances.'
     }
