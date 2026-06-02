@@ -8,6 +8,7 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
         heading: ['Montserrat', 'sans-serif'],
+        cursive: ['Pinyon Script', 'cursive'],
       },
     },
   },
