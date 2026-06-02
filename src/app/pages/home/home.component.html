@@ -1,258 +1,337 @@
-<section class="relative min-h-[90vh] bg-brand-charcoal overflow-hidden select-none animate-fade-in-up">
-  
-  <!-- Full-Width Slides Canvas -->
-  <div class="absolute inset-0 w-full h-full">
+<!-- Section 1: Cinematic Editorial Hero -->
+<section class="relative min-h-screen bg-primary overflow-hidden select-none flex items-center justify-center pt-20 animate-fade-in-up">
+  <!-- Immersive Slides Background -->
+  <div class="absolute inset-0 w-full h-full z-0">
     @for (slide of slides; track slide.url; let idx = $index) {
-      <div class="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out animate-fade-in"
+      <div class="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out"
            [class.opacity-100]="activeSlide() === idx"
            [class.opacity-0]="activeSlide() !== idx"
            [class.z-10]="activeSlide() === idx"
            [class.z-0]="activeSlide() !== idx">
-        <img [src]="slide.url" [alt]="slide.title" 
-             class="w-full h-full object-cover">
-        <!-- Soft dark overlay for extreme contrast and premium readability -->
-        <div class="absolute inset-0 bg-brand-charcoal/45"></div>
+        <img [src]="slide.url" [alt]="slide.title" class="w-full h-full object-cover">
+        <!-- Deep luxury dark vignette overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-primary/30"></div>
       </div>
     }
   </div>
 
-  <!-- Immersive Centered Content Overlay -->
-  <div class="relative z-20 max-w-7xl mx-auto px-6 sm:px-8 min-h-[90vh] flex flex-col justify-center lg:justify-center items-center text-center space-y-8 pt-24 sm:pt-28 lg:pt-0">
-    <div class="space-y-4 max-w-3xl">
-      <span class="inline-block font-sans text-xs sm:text-sm tracking-[0.4em] font-semibold text-accent-gold uppercase border-y border-accent-gold/25 py-2.5 px-6 mb-3 backdrop-blur-md bg-brand-charcoal/30 select-none">
-        INTERIOR DESIGN & ARCHITECTURE
+  <!-- Centered Content Grid -->
+  <div class="relative z-20 max-w-7xl mx-auto px-6 sm:px-8 text-center flex flex-col justify-center items-center space-y-8 py-20">
+    <div class="space-y-4 max-w-4xl">
+      <span class="inline-block font-sans text-sm tracking-[0.4em] font-semibold text-secondary uppercase border-y border-secondary/25 py-2.5 px-6 mb-3 bg-primary/40 backdrop-blur-sm select-none">
+        Architects & Curation Directors
       </span>
-      <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl text-brand-cream leading-[1.1] font-semibold">
-        Purity in Form.<br />
-        <span class="italic font-normal">Silence</span> in Space.
+      <h1 class="font-heading text-5xl sm:text-6xl md:text-8xl text-accent leading-[1.1] font-bold">
+        We design spaces<br />
+        <span class="italic font-normal text-secondary">that tell your story.</span>
       </h1>
     </div>
 
-    <p class="font-sans text-stone-200 text-base sm:text-lg font-light leading-relaxed max-w-2xl">
-      D sketch architecture creates timeless, highly curated minimalist environments. We combine architectural purity
-      with custom luxury craftsmanship to transform premium residential and commercial spaces.
+    <p class="font-sans text-accent/80 text-lg sm:text-xl font-normal leading-relaxed max-w-2xl">
+      Merging the timeless structural heritage of Kerala with elite, modern minimal curation to craft living sanctuaries that truly resonate.
     </p>
 
-    <!-- CTA Buttons -->
-    <div class="flex flex-col sm:flex-row items-center gap-4 pt-4 w-full sm:w-auto">
+    <!-- Luxury Editorial CTA Button -->
+    <div class="flex flex-col sm:flex-row items-center gap-6 pt-6 w-full sm:w-auto">
       <a routerLink="/gallery"
-        class="w-full sm:w-auto font-sans text-xs tracking-[0.2em] font-medium text-center text-brand-charcoal bg-brand-cream hover:bg-accent-gold hover:text-brand-charcoal py-4.5 px-10 transition-colors duration-300">
-        OUR WORKS
+        class="w-full sm:w-auto font-sans text-sm tracking-[0.2em] font-semibold text-center text-primary bg-secondary hover:bg-accent hover:text-primary py-5 px-12 transition-all duration-300">
+        DISCOVER PORTFOLIO
       </a>
       <a routerLink="/contact"
-        class="w-full sm:w-auto font-sans text-xs tracking-[0.2em] font-medium text-center text-brand-cream border border-brand-cream/30 hover:border-brand-cream hover:bg-brand-cream hover:text-brand-charcoal py-4.5 px-10 transition-all duration-300">
-        OUR SERVICES
+        class="w-full sm:w-auto font-sans text-sm tracking-[0.2em] font-semibold text-center text-accent border border-accent/20 hover:border-secondary hover:bg-secondary hover:text-primary py-5 px-12 transition-all duration-300">
+        COMMISSION AN INQUIRY
       </a>
     </div>
   </div>
 
-  <!-- Navigation Indicator Dots -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
+  <!-- Dynamic Dots Controls -->
+  <div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex space-x-4">
     @for (slide of slides; track slide.url; let idx = $index) {
       <button (click)="setSlide(idx)" 
-              class="w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer"
-              [class.bg-accent-gold]="activeSlide() === idx"
+              class="w-3 h-3 rounded-full transition-all duration-300 cursor-pointer"
+              [class.bg-secondary]="activeSlide() === idx"
               [class.scale-125]="activeSlide() === idx"
-              [class.bg-white/40]="activeSlide() !== idx"
-              [class.hover:bg-white/70]="activeSlide() !== idx">
+              [class.bg-accent/30]="activeSlide() !== idx"
+              [class.hover:bg-accent/60]="activeSlide() !== idx">
       </button>
     }
   </div>
 
-  <!-- Decorative Corner Accents -->
-  <span class="absolute top-8 right-8 w-12 h-12 border-t border-r border-accent-gold/45 z-20 pointer-events-none"></span>
-  <span class="absolute bottom-8 left-8 w-12 h-12 border-b border-l border-accent-gold/45 z-20 pointer-events-none"></span>
+  <!-- Editorial Accents -->
+  <span class="absolute top-12 right-12 w-16 h-16 border-t border-r border-secondary/25 z-20 pointer-events-none hidden sm:block"></span>
+  <span class="absolute bottom-12 left-12 w-16 h-16 border-b border-l border-secondary/25 z-20 pointer-events-none hidden sm:block"></span>
 </section>
 
-<!-- Section 2: Philosophy Manifesto -->
-<section class="bg-white border-y border-stone-100 py-24 sm:py-32 px-6 sm:px-8">
-  <div class="max-w-4xl mx-auto text-center space-y-12">
-    <span class="inline-block font-sans text-xs sm:text-sm tracking-[0.4em] font-semibold text-accent-gold uppercase border-y border-accent-gold/25 py-2.5 px-6 mb-3 select-none">
-      OUR MANIFESTO
-    </span>
-    <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-brand-charcoal font-light leading-snug">
-      “We believe that simplicity is the ultimate expression of custom sophistication. Every line must serve a purpose,
-      and every empty space must breathe.”
-    </h2>
-    <div class="w-12 h-0.5 bg-accent-gold mx-auto"></div>
-    <p class="font-sans text-stone-500 text-base leading-relaxed font-light max-w-2xl mx-auto">
-      Our design philosophy is anchored in a monochromatic palette, natural textures, and meticulous spatial alignments.
-      We bypass superficial trends to deliver architectural monuments that define tranquil, custom-crafted luxury.
-    </p>
+<!-- Section 2: Horizontal Scrolling Tagline Strip -->
+<section class="bg-surface text-secondary py-5 overflow-hidden border-y border-secondary/15 select-none relative">
+  <div class="flex whitespace-nowrap">
+    <div class="inline-block animate-ticker text-sm sm:text-base font-sans tracking-[0.25em] uppercase font-medium">
+      Architectural Design &nbsp;&middot;&nbsp; 
+      Interior Design &nbsp;&middot;&nbsp; 
+      Modular Kitchens &nbsp;&middot;&nbsp; 
+      3D Visualization &nbsp;&middot;&nbsp; 
+      Ceiling Design &nbsp;&middot;&nbsp; 
+      Wall Design &nbsp;&middot;&nbsp;
+      South Indian Modern Heritage &nbsp;&middot;&nbsp;
+      Bespoke Furniture Design &nbsp;&middot;&nbsp;
+      Architectural Design &nbsp;&middot;&nbsp; 
+      Interior Design &nbsp;&middot;&nbsp; 
+      Modular Kitchens &nbsp;&middot;&nbsp; 
+      3D Visualization &nbsp;&middot;&nbsp; 
+      Ceiling Design &nbsp;&middot;&nbsp; 
+      Wall Design &nbsp;&middot;&nbsp;
+      South Indian Modern Heritage &nbsp;&middot;&nbsp;
+      Bespoke Furniture Design &nbsp;&middot;&nbsp;
+    </div>
   </div>
 </section>
 
-<!-- Section 2.5: Experience Banner (Black & Gold) -->
-<section class="bg-brand-charcoal text-white py-16 sm:py-20 px-6 sm:px-8 relative overflow-hidden select-none border-y border-stone-800">
-  <!-- Absolute gold line decorations to make it feel extremely luxury -->
-  <span class="absolute top-0 left-0 w-24 h-px bg-gradient-to-r from-accent-gold to-transparent"></span>
-  <span class="absolute bottom-0 right-0 w-24 h-px bg-gradient-to-l from-accent-gold to-transparent"></span>
+<!-- Section 3: 2-Column About Editorial Spread -->
+<section class="py-24 sm:py-32 px-6 sm:px-8 bg-primary">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+    
+    <!-- Left Column: Large Italic Pull Quote (Spans 5) -->
+    <div class="lg:col-span-5 space-y-6">
+      <span class="text-secondary font-sans text-sm tracking-[0.3em] font-semibold uppercase block">STUDIO PHILOSOPHY</span>
+      <blockquote class="font-heading text-3xl sm:text-4xl text-accent font-normal leading-snug italic">
+        “Architecture is the quiet orchestration of shade, natural wind currents, and the traditional warmth of Kerala's heritage, updated for modern elite life.”
+      </blockquote>
+      <div class="w-16 h-px bg-secondary"></div>
+      <cite class="font-sans text-sm tracking-widest text-accent/50 uppercase block font-semibold">
+        D–SKETCH Curation Board &middot; Mongam
+      </cite>
+    </div>
 
-  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 sm:gap-16">
-    <!-- Left column: Experience Gold Badge -->
-    <div class="text-center lg:text-left space-y-3">
-      <span class="text-accent-gold font-sans text-xs tracking-[0.3em] font-semibold uppercase block">
-        ESTABLISHED LEGACY
-      </span>
-      <h3 class="font-serif text-3xl sm:text-4xl text-brand-cream font-medium">
-        12 Years of Architectural Mastery
-      </h3>
-      <p class="font-sans text-stone-400 text-sm font-light max-w-md">
-        Crafting elite spatial structures and curated interior monuments with uncompromising visual perfection since 2014.
+    <!-- Right Column: Brief company bio & CTA (Spans 7) -->
+    <div class="lg:col-span-7 space-y-8">
+      <h2 class="font-heading text-3xl sm:text-5xl text-accent font-medium leading-tight">
+        A Design Legacy Anchored in Cultural Warmth & Sculptural Scale
+      </h2>
+      <p class="font-sans text-accent/75 text-base sm:text-lg leading-relaxed font-normal">
+        D–SKETCH is a highly acclaimed architectural curation firm based in Mongam, Kerala. Founded on the principle of integrating the natural ventilation, wood details, and light plays of traditional Kerala structures with ultra-refined global minimalism.
       </p>
-    </div>
-
-    <!-- Right column: Stats Grid -->
-    <div class="w-full lg:w-auto grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-12 text-center lg:text-left">
-      <div class="space-y-1.5 border-stone-800 lg:border-l lg:pl-8 first:border-none">
-        <span class="font-serif text-4xl sm:text-5xl text-accent-gold font-light block">12</span>
-        <p class="font-sans text-[10px] tracking-[0.15em] text-stone-400 uppercase font-light">Years in Business</p>
+      <p class="font-sans text-accent/75 text-base sm:text-lg leading-relaxed font-normal">
+        We handle each residence or commercial environment as a custom visual sculpture, rejecting typical builder templates in favor of hand-curated materials, advanced 3D simulations, and precision custom carpentry.
+      </p>
+      <div class="pt-4">
+        <a routerLink="/about"
+          class="inline-block font-sans text-sm tracking-[0.2em] font-semibold text-primary bg-secondary hover:bg-accent hover:text-primary py-4 px-10 transition-colors duration-300">
+          DISCOVER OUR STORY
+        </a>
       </div>
-      <div class="space-y-1.5 border-stone-800 border-l pl-4 sm:pl-8">
-        <span class="font-serif text-4xl sm:text-5xl text-accent-gold font-light block">500+</span>
-        <p class="font-sans text-[10px] tracking-[0.15em] text-stone-400 uppercase font-light">Commissions</p>
-      </div>
-      <div class="space-y-1.5 border-stone-800 border-l pl-4 sm:pl-8">
-        <span class="font-serif text-4xl sm:text-5xl text-accent-gold font-light block">100%</span>
-        <p class="font-sans text-[10px] tracking-[0.15em] text-stone-400 uppercase font-light">Bespoke Design</p>
-      </div>
-      <div class="space-y-1.5 border-stone-800 border-l pl-4 sm:pl-8">
-        <span class="font-serif text-4xl sm:text-5xl text-accent-gold font-light block">09+</span>
-        <p class="font-sans text-[10px] tracking-[0.15em] text-stone-400 uppercase font-light">Services</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Section 3: Curated Works -->
-<section class="py-24 sm:py-32 px-6 sm:px-8 bg-brand-cream">
-  <div class="max-w-7xl mx-auto space-y-16">
-
-    <!-- Title Area -->
-    <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
-      <div class="space-y-4">
-        <span class="inline-block font-sans text-xs sm:text-sm tracking-[0.4em] font-semibold text-accent-gold uppercase border-y border-accent-gold/25 py-2.5 px-6 mb-3 select-none">
-          COMMISSION PREVIEWS
-        </span>
-        <h2 class="font-serif text-4xl sm:text-5xl text-brand-charcoal font-semibold">
-          Curated Portfolios
-        </h2>
-      </div>
-      <a routerLink="/gallery"
-        class="font-sans text-xs tracking-[0.2em] font-medium text-brand-charcoal hover:text-accent-gold border-b border-brand-charcoal/20 hover:border-accent-gold pb-1 transition-all duration-300">
-        VIEW ALL PROJECTS &rarr;
-      </a>
-    </div>
-
-    <!-- 3-Column Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-      <!-- Card 1 -->
-      <div class="group cursor-pointer space-y-5">
-        <div
-          class="relative w-full aspect-[4/5] overflow-hidden border border-stone-200 transition-all duration-500 group-hover:border-accent-gold">
-          <img src="/images/minimalistLake.webp" alt="Minimalist Lake Villa"
-            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
-        </div>
-        <div class="space-y-1">
-          <h3
-            class="font-serif text-xl text-brand-charcoal group-hover:text-accent-gold transition-colors duration-300">
-            Minimalist Lake Villa
-          </h3>
-          <p class="font-sans text-xs text-stone-400 tracking-wider font-light">
-            LUGANO, SWITZERLAND &bull; 2025
-          </p>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="group cursor-pointer space-y-5">
-        <div
-          class="relative w-full aspect-[4/5] overflow-hidden border border-stone-200 transition-all duration-500 group-hover:border-accent-gold">
-          <img src="/images/auragGallary.webp" alt="Aura Curation Gallery"
-            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
-        </div>
-        <div class="space-y-1">
-          <h3
-            class="font-serif text-xl text-brand-charcoal group-hover:text-accent-gold transition-colors duration-300">
-            Aura Curation Gallery
-          </h3>
-          <p class="font-sans text-xs text-stone-400 tracking-wider font-light">
-            GENEVA, SWITZERLAND &bull; 2024
-          </p>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="group cursor-pointer space-y-5">
-        <div
-          class="relative w-full aspect-[4/5] overflow-hidden border border-stone-200 transition-all duration-500 group-hover:border-accent-gold">
-          <img src="/images/concreateValutePavillion.webp" alt="Monolith Concrete Pavilion"
-            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
-        </div>
-        <div class="space-y-1">
-          <h3
-            class="font-serif text-xl text-brand-charcoal group-hover:text-accent-gold transition-colors duration-300">
-            Monolith Concrete Pavilion
-          </h3>
-          <p class="font-sans text-xs text-stone-400 tracking-wider font-light">
-            ZURICH, SWITZERLAND &bull; 2025
-          </p>
-        </div>
-      </div>
-
     </div>
 
   </div>
 </section>
 
-<!-- Section 4: Accolades / Testimonials -->
-<section class="py-24 sm:py-32 px-6 sm:px-8 bg-white border-t border-stone-100">
+<!-- Section 4: Asymmetric Services Preview -->
+<section class="py-24 sm:py-32 px-6 sm:px-8 bg-surface border-y border-secondary/10">
   <div class="max-w-7xl mx-auto space-y-16">
     <div class="text-center space-y-4">
-      <span class="inline-block font-sans text-xs sm:text-sm tracking-[0.4em] font-semibold text-accent-gold uppercase border-y border-accent-gold/25 py-2.5 px-6 mb-3 select-none">
-        ACCOLADES
+      <span class="inline-block font-sans text-sm tracking-[0.4em] font-semibold text-secondary uppercase border-y border-secondary/25 py-2.5 px-6 mb-3">
+        OUR ARCHITECTURAL DISCIPLINE
       </span>
-      <h2 class="font-serif text-4xl sm:text-5xl text-brand-charcoal font-semibold">
-        Client Accolades
+      <h2 class="font-heading text-4xl sm:text-5xl text-accent font-semibold">
+        Core Design Competencies
       </h2>
     </div>
 
-    <!-- Testimonial Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 sm:gap-16 pt-8 max-w-5xl mx-auto">
+    <!-- Asymmetric Grid of 3 Cards -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      
+      <!-- Card 1 -->
+      <div class="bg-primary border border-secondary/15 p-8 sm:p-12 space-y-8 luxury-lift flex flex-col justify-between min-h-[400px]">
+        <div class="space-y-6">
+          <span class="font-heading text-5xl font-semibold text-secondary/35 block">01</span>
+          <h3 class="font-heading text-2xl text-accent font-bold">Architectural Design</h3>
+          <p class="font-sans text-accent/70 text-base leading-relaxed font-normal">
+            Crafting monumental, customized structural blueprints. We choreograph absolute spatial alignment with solar cycles, airflow, and localized geographical beauty.
+          </p>
+        </div>
+        <a routerLink="/services" class="font-sans text-sm tracking-[0.2em] font-semibold text-secondary hover:text-accent transition-colors duration-300 uppercase block">
+          LEARN DISCIPLINE &rarr;
+        </a>
+      </div>
 
-      <!-- Testimonial 1 -->
-      <div class="space-y-6 md:pr-8 md:border-r border-stone-100">
-        <p class="font-serif text-lg italic text-stone-600 leading-relaxed">
-          “D sketch architecture has elevated our lake villa into a sanctuary of peaceful luxury. The negative spaces
-          are perfectly orchestrated, and the level of precision in custom carpentry details is outstanding.”
-        </p>
-        <div class="space-y-1">
-          <h4 class="font-sans text-xs tracking-widest text-brand-charcoal font-semibold uppercase">
-            HANS & ELAINE WEBER
-          </h4>
-          <span class="font-sans text-[10px] tracking-widest text-stone-400 uppercase font-light">
-            LUGANO ESTATE COMMISSIONS
-          </span>
+      <!-- Card 2 (Elevated visually to feel asymmetrical) -->
+      <div class="bg-primary border border-secondary p-8 sm:p-12 space-y-8 luxury-lift flex flex-col justify-between min-h-[400px] lg:-translate-y-4 shadow-[0_15px_35px_rgba(201,169,110,0.08)]">
+        <div class="space-y-6">
+          <span class="font-heading text-5xl font-semibold text-secondary block">02</span>
+          <h3 class="font-heading text-2xl text-accent font-bold">Interior Design</h3>
+          <p class="font-sans text-accent/70 text-base leading-relaxed font-normal">
+            Luxury residential villa plans and elite commercial spaces. We hand-select rich walnut panels, natural limestone, customized brass details, and hand-woven fabrics.
+          </p>
+        </div>
+        <a routerLink="/services" class="font-sans text-sm tracking-[0.2em] font-semibold text-secondary hover:text-accent transition-colors duration-300 uppercase block">
+          LEARN DISCIPLINE &rarr;
+        </a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-primary border border-secondary/15 p-8 sm:p-12 space-y-8 luxury-lift flex flex-col justify-between min-h-[400px]">
+        <div class="space-y-6">
+          <span class="font-heading text-5xl font-semibold text-secondary/35 block">03</span>
+          <h3 class="font-heading text-2xl text-accent font-bold">Modular Kitchens</h3>
+          <p class="font-sans text-accent/70 text-base leading-relaxed font-normal">
+            Engineered utility meets sleek South Indian aesthetics. Flawless handle-less cupboards, integrated high-end appliances, and warm, tactile wood and stone textures.
+          </p>
+        </div>
+        <a routerLink="/services" class="font-sans text-sm tracking-[0.2em] font-semibold text-secondary hover:text-accent transition-colors duration-300 uppercase block">
+          LEARN DISCIPLINE &rarr;
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Section 5: Animated Stats Section -->
+<section class="bg-primary text-accent py-20 px-6 sm:px-8 border-b border-secondary/10 relative overflow-hidden select-none">
+  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24">
+    <div class="text-center lg:text-left space-y-3 max-w-xl">
+      <span class="text-secondary font-sans text-sm tracking-[0.3em] font-semibold uppercase block">ESTABLISHED STRENGTH</span>
+      <h3 class="font-heading text-3xl sm:text-4xl text-accent font-medium"><span class="text-secondary font-bold">12 Years</span> of Uncompromised Visual Curation</h3>
+      <p class="font-sans text-accent/60 text-base font-normal leading-relaxed">
+        Delivering award-winning spatial masterpieces across Kerala with rigorous details, from Mongam showrooms to high-end estate properties.
+      </p>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="w-full lg:w-auto grid grid-cols-2 sm:grid-cols-4 gap-8 md:gap-12 lg:gap-40 text-center">
+      <div class="space-y-3 px-2 sm:px-4">
+        <span class="font-heading text-5xl sm:text-6xl text-secondary font-semibold block">450+</span>
+        <p class="font-sans text-sm tracking-wider text-white uppercase font-bold">Projects Completed</p>
+      </div>
+      <div class="space-y-3 px-2 sm:px-4 border-l border-secondary/15">
+        <span class="font-heading text-5xl sm:text-6xl text-secondary font-semibold block">12+</span>
+        <p class="font-sans text-sm tracking-wider text-white uppercase font-bold">Years Experience</p>
+      </div>
+      <div class="space-y-3 px-2 sm:px-4 border-l border-secondary/15">
+        <span class="font-heading text-5xl sm:text-6xl text-secondary font-semibold block">380+</span>
+        <p class="font-sans text-sm tracking-wider text-white uppercase font-bold">Happy Clients</p>
+      </div>
+      <div class="space-y-3 px-2 sm:px-4 border-l border-secondary/15">
+        <span class="font-heading text-5xl sm:text-6xl text-secondary font-semibold block">15+</span>
+        <p class="font-sans text-sm tracking-wider text-white uppercase font-bold">Cities Served</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 6: Featured Projects Teaser (Masonry-Style) -->
+<section class="py-24 sm:py-32 px-6 sm:px-8 bg-primary">
+  <div class="max-w-7xl mx-auto space-y-16">
+    <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
+      <div class="space-y-4">
+        <span class="inline-block font-sans text-sm tracking-[0.4em] font-semibold text-secondary uppercase border-y border-secondary/25 py-2.5 px-6 mb-3">
+          ARCHIVE HIGHLIGHTS
+        </span>
+        <h2 class="font-heading text-4xl sm:text-5xl text-accent font-semibold">Featured Portfolios</h2>
+      </div>
+      <a routerLink="/gallery"
+        class="font-sans text-sm tracking-[0.2em] font-bold text-accent hover:text-secondary border-b border-accent/20 hover:border-secondary pb-1.5 transition-all duration-300">
+        VIEW ENTIRE ARCHIVE &rarr;
+      </a>
+    </div>
+
+    <!-- Asymmetric Masonry Image Grid (4 Images) -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+      
+      <!-- Project 1 (Spans 7) -->
+      <div class="md:col-span-7 group cursor-pointer space-y-4">
+        <div class="relative w-full aspect-[16/10] overflow-hidden border border-secondary/10 group-hover:border-secondary transition-all duration-500 bg-surface">
+          <img src="/images/lakeLuganovilla.webp" alt="Terracotta Courtyard Villa" 
+               class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+          <!-- Warm overlay gradient on hover -->
+          <div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+          
+          <!-- Bottom Left Text Overlay -->
+          <div class="absolute bottom-6 left-6 space-y-1 z-10">
+            <span class="font-sans text-sm tracking-widest text-secondary uppercase font-semibold">RESIDENTIAL ARCHITECTURE</span>
+            <h4 class="font-heading text-xl sm:text-2xl text-accent">Terracotta Courtyard Villa</h4>
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-sm text-accent/50 font-sans font-medium tracking-wide">
+          <span>MALAPPURAM, KERALA</span>
+          <span>2025</span>
         </div>
       </div>
 
-      <!-- Testimonial 2 -->
-      <div class="space-y-6 md:pl-8">
-        <p class="font-serif text-lg italic text-stone-600 leading-relaxed">
-          “Their control over monochromatic tones is masterful. They designed our Basel modern art boutique, creating a
-          beautiful spatial choreography that perfectly frames our collections without ever competing with them.”
-        </p>
-        <div class="space-y-1">
-          <h4 class="font-sans text-xs tracking-widest text-brand-charcoal font-semibold uppercase">
-            VALERIE LEROY
-          </h4>
-          <span class="font-sans text-[10px] tracking-widest text-stone-400 uppercase font-light">
-            DIRECTOR, GALERIE AURA
-          </span>
+      <!-- Project 2 (Spans 5) -->
+      <div class="md:col-span-5 group cursor-pointer space-y-4">
+        <div class="relative w-full aspect-[4/3] md:h-full overflow-hidden border border-secondary/10 group-hover:border-secondary transition-all duration-500 bg-surface">
+          <img src="/images/firstimage.webp" alt="Minimalist Teakwood Residence" 
+               class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+          
+          <div class="absolute bottom-6 left-6 space-y-1 z-10">
+            <span class="font-sans text-sm tracking-widest text-secondary uppercase font-semibold">INTERIOR COMMISSION</span>
+            <h4 class="font-heading text-xl sm:text-2xl text-accent">Teakwood Minimalist Haven</h4>
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-sm text-accent/50 font-sans font-medium tracking-wide">
+          <span>CALICUT, KERALA</span>
+          <span>2024</span>
         </div>
       </div>
 
+      <!-- Project 3 (Spans 5) -->
+      <div class="md:col-span-5 group cursor-pointer space-y-4">
+        <div class="relative w-full aspect-[4/3] overflow-hidden border border-secondary/10 group-hover:border-secondary transition-all duration-500 bg-surface">
+          <img src="/images/auragGallary.webp" alt="Bespoke Walnut Showroom" 
+               class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+          
+          <div class="absolute bottom-6 left-6 space-y-1 z-10">
+            <span class="font-sans text-sm tracking-widest text-secondary uppercase font-semibold">COMMERCIAL SPATIALS</span>
+            <h4 class="font-heading text-xl sm:text-2xl text-accent">Bespoke Walnut Showroom</h4>
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-sm text-accent/50 font-sans font-medium tracking-wide">
+          <span>MONGAM, KERALA</span>
+          <span>2025</span>
+        </div>
+      </div>
+
+      <!-- Project 4 (Spans 7) -->
+      <div class="md:col-span-7 group cursor-pointer space-y-4">
+        <div class="relative w-full aspect-[16/10] overflow-hidden border border-secondary/10 group-hover:border-secondary transition-all duration-500 bg-surface">
+          <img src="/images/concreateValutePavillion.webp" alt="Modern Tropical Pavilion" 
+               class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+          
+          <div class="absolute bottom-6 left-6 space-y-1 z-10">
+            <span class="font-sans text-sm tracking-widest text-secondary uppercase font-semibold">ARCHITECTURAL BLUEPRINT</span>
+            <h4 class="font-heading text-xl sm:text-2xl text-accent">Modern Tropical Pavilion</h4>
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-sm text-accent/50 font-sans font-medium tracking-wide">
+          <span>ERNAKULAM, KERALA</span>
+          <span>2025</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Section 7: Immersive Gold CTA Banner -->
+<section class="bg-secondary text-primary py-20 px-6 sm:px-8 relative overflow-hidden select-none border-t border-secondary/20">
+  <span class="absolute top-0 left-0 w-32 h-px bg-gradient-to-r from-primary to-transparent"></span>
+  <span class="absolute bottom-0 right-0 w-32 h-px bg-gradient-to-l from-primary to-transparent"></span>
+  
+  <div class="max-w-5xl mx-auto text-center space-y-8 relative z-10">
+    <h2 class="font-heading text-4xl sm:text-6xl text-primary font-bold leading-tight">
+      Ready to redefine your space?
+    </h2>
+    <p class="font-sans text-primary/80 text-lg sm:text-xl font-normal leading-relaxed max-w-2xl mx-auto">
+      Choreograph your architectural commissions and custom interior parameters directly with our curation directors.
+    </p>
+    <div class="pt-4">
+      <a routerLink="/contact"
+        class="inline-block font-sans text-sm tracking-[0.25em] font-semibold text-secondary bg-primary hover:bg-accent hover:text-primary py-5 px-14 transition-colors duration-300">
+        INITIATE COMMISSION &rarr;
+      </a>
     </div>
   </div>
 </section>

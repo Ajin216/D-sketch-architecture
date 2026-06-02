@@ -1,156 +1,113 @@
-<!-- Header Section -->
-<section class="py-24 sm:py-32 px-6 sm:px-8 bg-brand-cream border-b border-stone-100 select-none animate-fade-in-up">
+<!-- Section 1: Page Hero -->
+<section class="py-24 sm:py-32 px-6 sm:px-8 bg-primary border-b border-secondary/15 select-none animate-fade-in-up">
   <div class="max-w-7xl mx-auto space-y-6 text-center">
-    <span class="inline-block font-sans text-xs sm:text-sm tracking-[0.4em] font-semibold text-accent-gold uppercase border-y border-accent-gold/25 py-2.5 px-6 mb-3 select-none">
-      ENGAGE WITH THE STUDIO
+    <span class="inline-block font-sans text-xs sm:text-sm tracking-[0.4em] font-semibold text-secondary uppercase border-y border-secondary/25 py-2.5 px-6 mb-3">
+      COMMISSION THE STUDIO
     </span>
-    <h1 class="font-serif text-5xl sm:text-6xl text-brand-charcoal font-semibold max-w-3xl mx-auto leading-[1.1]">
-      Initiate Your Commission
+    <h1 class="font-display text-5xl sm:text-6xl text-accent font-bold max-w-4xl mx-auto leading-tight">
+      Initiate Your Briefing
     </h1>
-    <div class="w-12 h-0.5 bg-accent-gold mx-auto my-6"></div>
-    <p class="font-sans text-stone-600 text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
-      Whether you are scouting space curation for a private residence or an elite commercial gallery, our studio is
-      prepared to choreograph your vision.
-    </p>
+    <div class="w-16 h-px bg-secondary mx-auto"></div>
   </div>
 </section>
 
-<!-- Split Main Layout -->
-<section class="py-24 sm:py-32 px-6 sm:px-8 bg-white">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 sm:gap-20">
-
-    <!-- Left Column: Studio coordinates & Map Placeholder (Spans 5) -->
-    <div class="lg:col-span-5 space-y-12">
-      <div class="space-y-6">
-        <h2 class="font-serif text-3xl text-brand-charcoal font-semibold">
-          Studio Headquarters
-        </h2>
-        <p class="font-sans text-stone-500 text-sm leading-relaxed font-light">
-          We welcome clients to our showroom by appointment. Our team is available globally for on-site visual
-          consultations and commissioning assessments.
-        </p>
-      </div>
-
-      <!-- Coordinates List -->
-      <div class="space-y-6 text-sm font-light text-stone-600 font-sans">
-        <div class="space-y-1">
-          <span class="text-accent-gold font-medium tracking-widest text-xs uppercase block">SHOWROOM LOCATION</span>
-          <p>
-            1st Floor, D - SKETCH Architecture,<br />
-            TK Building, Mongam,<br />
-            Malappuram-673642, Kerala
-          </p>
-        </div>
-
-        <div class="space-y-1">
-          <span class="text-accent-gold font-medium tracking-widest text-xs uppercase block">STUDIO TELEPHONE</span>
-          <p>09447357775</p>
-        </div>
-
-        <div class="space-y-1">
-          <span class="text-accent-gold font-medium tracking-widest text-xs uppercase block">COMMISSION INQUIRIES</span>
-          <p class="lowercase">design&#64;dsketch.in</p>
-        </div>
-
-        <div class="space-y-1">
-          <span class="text-accent-gold font-medium tracking-widest text-xs uppercase block">OPERATING HOURS</span>
-          <p>
-            Monday — Saturday: 9:00 am — 5:00 pm<br />
-            Sunday: Closed
-          </p>
-        </div>
-      </div>
-
-      <!-- Interactive Map Preview -->
-      <div class="relative w-full aspect-[4/3] overflow-hidden border border-stone-200 shadow-sm group">
-        <iframe
-          src="https://maps.google.com/maps?q=D%20-%20SKETCH%20Architecture,%20TK%20Building,%20Mongam,%20Kerala&t=&z=16&ie=UTF8&iwloc=&output=embed"
-          class="w-full h-full border-0" allowfullscreen="" loading="lazy">
-        </iframe>
-      </div>
-    </div>
-
-    <!-- Right Column: Briefing Request Form (Spans 7) -->
-    <div class="lg:col-span-7 bg-stone-50/50 border border-stone-100 p-8 sm:p-12 relative">
-
-      <!-- Submission Success State -->
+<!-- Section 2: Split main panels (Left Form, Right coordinates & map) -->
+<section class="py-24 sm:py-32 px-6 sm:px-8 bg-surface">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
+    
+    <!-- Left Column: Briefing Request Form (Spans 7) -->
+    <div class="lg:col-span-7 bg-primary border border-secondary/25 p-8 sm:p-12 relative flex flex-col justify-center min-h-[600px] shadow-xl">
+      
+      <!-- Form Success State -->
       <div *ngIf="isSubmitted()"
-        class="h-full flex flex-col justify-center items-center text-center space-y-6 animate-fade-in-up py-16">
-        <span class="text-accent-gold text-5xl">&bull;</span>
-        <h3 class="font-serif text-3xl text-brand-charcoal font-semibold">
+        class="h-full flex flex-col justify-center items-center text-center space-y-6 animate-fade-in py-16">
+        <span class="text-secondary text-5xl font-extralight">&bull;</span>
+        <h3 class="font-display text-3xl text-white font-bold">
           Briefing Received
         </h3>
-        <p class="font-sans text-stone-500 text-sm leading-relaxed font-light max-w-md mx-auto">
-          Thank you for initiating contact. Evelyn Varga and our curation directors will evaluate your layout parameters
-          and follow up within 24 hours to schedule a custom meeting.
+        <p class="font-body text-white text-lg leading-relaxed font-light max-w-md mx-auto">
+          Thank you for initiating your project briefing. Our design directors will evaluate your space parameters and respond within 24 hours to schedule your layout consultation.
         </p>
         <button (click)="resetForm()"
-          class="font-sans text-xs tracking-[0.2em] font-medium text-brand-charcoal border border-brand-charcoal/20 hover:border-brand-charcoal hover:bg-brand-charcoal hover:text-brand-cream py-3 px-6 transition-all duration-300">
+          class="font-sans text-xs tracking-[0.2em] font-bold text-white border border-secondary/40 hover:border-secondary hover:bg-secondary hover:text-primary py-4.5 px-10 transition-all duration-300">
           SUBMIT ANOTHER REQUEST
         </button>
       </div>
 
       <!-- Active Form State -->
-      <div *ngIf="!isSubmitted()" class="space-y-8 animate-fade-in-up">
+      <div *ngIf="!isSubmitted()" class="space-y-8 animate-fade-in">
         <div class="space-y-3">
-          <h2 class="font-serif text-3xl text-brand-charcoal font-semibold">
-            Briefing Application
+          <h2 class="font-display text-3xl text-white font-bold">
+            Project Briefing Application
           </h2>
-          <p class="font-sans text-stone-400 text-xs tracking-wider uppercase font-light">
-            Step 01 / 02: Layout Parameters
+          <p class="font-sans text-secondary text-[11px] tracking-widest uppercase font-bold">
+            STEP 01 / 02: COMMISSION DETAILS
           </p>
         </div>
 
         <form (submit)="onSubmit($event)" class="space-y-8">
-
-          <!-- Full Name -->
-          <div class="space-y-2">
-            <label for="name" class="font-sans text-[10px] tracking-widest text-stone-400 uppercase font-medium">
-              FULL NAME / INSTITUTION
-            </label>
-            <input type="text" id="name" required placeholder="E.g. Valerie Leroy"
-              class="w-full bg-transparent border-b border-stone-300 py-3 text-stone-900 focus:outline-none focus:border-accent-gold transition-colors duration-300 font-sans font-light text-sm placeholder-stone-300" />
+          
+          <!-- Row 1: Name & Email -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div class="space-y-3">
+              <label for="name" class="font-sans text-[11px] tracking-widest text-white uppercase font-bold block">
+                FULL NAME / ORGANISATION *
+              </label>
+              <input type="text" id="name" required placeholder="Valerie Leroy"
+                class="w-full bg-surface border border-secondary/35 rounded-none py-3.5 px-4 text-white focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all duration-300 font-sans font-light text-sm placeholder-white/30" />
+            </div>
+            
+            <div class="space-y-3">
+              <label for="email" class="font-sans text-[11px] tracking-widest text-white uppercase font-bold block">
+                EMAIL ADDRESS *
+              </label>
+              <input type="email" id="email" required placeholder="valerie@dsketch.in"
+                class="w-full bg-surface border border-secondary/35 rounded-none py-3.5 px-4 text-white focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all duration-300 font-sans font-light text-sm placeholder-white/30" />
+            </div>
           </div>
 
-          <!-- Email Address -->
-          <div class="space-y-2">
-            <label for="email" class="font-sans text-[10px] tracking-widest text-stone-400 uppercase font-medium">
-              EMAIL ADDRESS
-            </label>
-            <input type="email" id="email" required placeholder="E.g. valerie&#64;galerieaura.ch"
-              class="w-full bg-transparent border-b border-stone-300 py-3 text-stone-900 focus:outline-none focus:border-accent-gold transition-colors duration-300 font-sans font-light text-sm placeholder-stone-300" />
+          <!-- Row 2: Phone & Service -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div class="space-y-3">
+              <label for="phone" class="font-sans text-[11px] tracking-widest text-white uppercase font-bold block">
+                PHONE NUMBER *
+              </label>
+              <input type="tel" id="phone" required placeholder="+91 90745 01397"
+                class="w-full bg-surface border border-secondary/35 rounded-none py-3.5 px-4 text-white focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all duration-300 font-sans font-light text-sm placeholder-white/30" />
+            </div>
+
+            <div class="space-y-3">
+              <label for="service" class="font-sans text-[11px] tracking-widest text-white uppercase font-bold block">
+                SERVICE TYPE *
+              </label>
+              <select id="service" required
+                class="w-full bg-surface border border-secondary/35 rounded-none py-3.5 px-4 text-white focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all duration-300 font-sans font-light text-sm">
+                <option value="" disabled selected class="bg-surface text-white/50">Select category...</option>
+                <option value="architectural" class="bg-surface text-white">Architectural Curation</option>
+                <option value="residential-interior" class="bg-surface text-white">Residential Interior Design</option>
+                <option value="commercial-interior" class="bg-surface text-white">Commercial Interior Design</option>
+                <option value="modular-kitchen" class="bg-surface text-white">Modular Kitchen Design</option>
+                <option value="ceiling-wall" class="bg-surface text-white">Ceiling & Wall Panelling</option>
+                <option value="garden" class="bg-surface text-white">Tropical Courtyard & Garden</option>
+                <option value="3d-viz" class="bg-surface text-white">3D Visualization Services</option>
+              </select>
+            </div>
           </div>
 
-          <!-- Commission Category -->
-          <div class="space-y-2">
-            <label for="category"
-              class="font-sans text-[10px] tracking-widest text-stone-400 uppercase font-medium block">
-              COMMISSION TYPE
-            </label>
-            <select id="category" required
-              class="w-full bg-transparent border-b border-stone-300 py-3 text-stone-900 focus:outline-none focus:border-accent-gold transition-colors duration-300 font-sans font-light text-sm">
-              <option value="" disabled selected>Select category...</option>
-              <option value="residential">Private Residential Commission</option>
-              <option value="commercial">Commercial Design & Gallery Setup</option>
-              <option value="bespoke">Bespoke Furnishing & Material Design</option>
-              <option value="consultation">Spatial Layout Consultation Only</option>
-            </select>
-          </div>
-
-          <!-- Message Briefing -->
-          <div class="space-y-2">
-            <label for="message" class="font-sans text-[10px] tracking-widest text-stone-400 uppercase font-medium">
-              PROJECT BRIEFING & PARAMETERS
+          <!-- Project Description -->
+          <div class="space-y-3">
+            <label for="message" class="font-sans text-[11px] tracking-widest text-white uppercase font-bold block">
+              PROJECT BRIEF DESCRIPTION *
             </label>
             <textarea id="message" rows="4" required
-              placeholder="Briefly describe the spatial parameters, size in square meters, and desired finish vibes (e.g. Zurich penthouses)..."
-              class="w-full bg-transparent border-b border-stone-300 py-3 text-stone-900 focus:outline-none focus:border-accent-gold transition-colors duration-300 font-sans font-light text-sm placeholder-stone-300 resize-none"></textarea>
+              placeholder="Briefly describe your spatial boundaries, structural dreams, and target timelines (e.g. courtyard garden integration)..."
+              class="w-full bg-surface border border-secondary/35 rounded-none py-3.5 px-4 text-white focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all duration-300 font-sans font-light text-sm placeholder-white/30 resize-none"></textarea>
           </div>
 
           <!-- Submit Button -->
           <div class="pt-4">
             <button type="submit"
-              class="w-full font-sans text-xs tracking-[0.2em] font-medium text-brand-cream bg-brand-charcoal hover:bg-accent-gold hover:text-brand-charcoal py-5 transition-colors duration-300 uppercase">
+              class="w-full font-sans text-xs tracking-[0.25em] font-bold text-primary bg-secondary hover:bg-white hover:text-primary py-5 transition-colors duration-300 uppercase cursor-pointer">
               SUBMIT BRIEFING REQUEST &rarr;
             </button>
           </div>
@@ -160,5 +117,99 @@
 
     </div>
 
+    <!-- Right Column: Showroom coordinates, Map, WhatsApp (Spans 5) -->
+    <div class="lg:col-span-5 space-y-10">
+      <div class="space-y-6">
+        <h2 class="font-display text-3xl text-white font-bold">
+          Studio Headquarters
+        </h2>
+        <p class="font-body text-white text-base leading-relaxed font-light">
+          We welcome clients to our primary Mongam Showroom to touch physical material sheets, examine modular mockups, and schedule layout blueprints.
+        </p>
+      </div>
+
+      <!-- Coordinates Card Details -->
+      <div class="bg-primary border border-secondary/15 p-8 space-y-6 text-xs font-sans tracking-widest text-white">
+        <div class="space-y-2">
+          <span class="text-secondary font-bold text-[9px] block">SHOWROOM COORDINATES</span>
+          <p class="leading-relaxed">
+            D–SKETCH ARCHITECTURE & INTERIORS<br/>
+            1ST FLOOR, TK BUILDING, MONGAM,<br/>
+            MALAPPURAM, KERALA — 673642
+          </p>
+        </div>
+
+        <div class="space-y-2 border-t border-secondary/10 pt-4">
+          <span class="text-secondary font-bold text-[9px] block">COMMISSION DESK</span>
+          <p>design@dsketch.in</p>
+          <p>+91 90745 01397</p>
+        </div>
+
+        <!-- WhatsApp Chat Integration Button -->
+        <div class="pt-4">
+          <a href="https://wa.me/919074501397" target="_blank"
+             class="w-full inline-flex items-center justify-center space-x-3 bg-emerald-600 hover:bg-emerald-700 text-white font-sans text-[10px] tracking-widest py-4 px-6 border border-emerald-500 transition-all duration-300 font-bold uppercase">
+            <!-- Custom WhatsApp Chat SVG -->
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.859-4.42 9.863-9.864.002-2.634-1.02-5.11-2.881-6.974-1.86-1.865-4.343-2.891-6.986-2.892-5.445 0-9.866 4.417-9.87 9.862-.001 1.702.463 3.361 1.346 4.8l-.996 3.636 3.702-.963zm10.93-5.306c-.299-.15-1.77-.875-2.048-.976-.279-.1-.481-.15-.683.15-.202.3-.781.976-.957 1.176-.176.2-.352.225-.651.075-.299-.15-1.265-.467-2.41-1.485-.89-.795-1.492-1.777-1.667-2.076-.176-.3-.019-.462.13-.611.134-.134.3-.349.449-.524.15-.175.2-.299.3-.5.1-.201.05-.375-.025-.525-.075-.15-.683-1.65-.937-2.25-.247-.599-.5-.518-.683-.527-.176-.008-.378-.01-.58-.01s-.53.076-.807.376c-.279.3-1.062 1.037-1.062 2.53 0 1.493 1.085 2.937 1.236 3.138.15.2 2.137 3.263 5.176 4.57 3.039 1.308 3.039.872 3.593.822.553-.05 1.77-.723 2.022-1.423.253-.7 2.53-4.137 2.454-4.263l-.707-.354z"/>
+            </svg>
+            <span>CHAT ON WHATSAPP</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Google Map Frame (Standard layout) -->
+      <div class="relative w-full aspect-[4/3] overflow-hidden border border-secondary/15 shadow-md">
+        <iframe
+          src="https://maps.google.com/maps?q=D%20-%20SKETCH%20Architecture,%20TK%20Building,%20Mongam,%20Kerala&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          class="w-full h-full border-0" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Section 3: Bottom Gold Social Row -->
+<section class="py-16 px-6 sm:px-8 bg-primary border-t border-secondary/15 text-center">
+  <div class="max-w-4xl mx-auto space-y-8">
+    <span class="text-secondary font-sans text-xs tracking-[0.3em] font-semibold uppercase block">FOLLOW OUR MASTERWORKS</span>
+    
+    <div class="flex justify-center items-center gap-10">
+      
+      <!-- Instagram -->
+      <a href="https://instagram.com" target="_blank" class="text-secondary hover:text-accent transition-colors duration-300" aria-label="Instagram">
+        <svg class="w-7 h-7 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+        </svg>
+      </a>
+
+      <!-- Facebook -->
+      <a href="https://facebook.com" target="_blank" class="text-secondary hover:text-accent transition-colors duration-300" aria-label="Facebook">
+        <svg class="w-7 h-7 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+        </svg>
+      </a>
+
+      <!-- LinkedIn -->
+      <a href="https://linkedin.com" target="_blank" class="text-secondary hover:text-accent transition-colors duration-300" aria-label="LinkedIn">
+        <svg class="w-7 h-7 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+          <rect x="2" y="9" width="4" height="12" />
+          <circle cx="4" cy="4" r="2" />
+        </svg>
+      </a>
+
+      <!-- YouTube -->
+      <a href="https://youtube.com" target="_blank" class="text-secondary hover:text-accent transition-colors duration-300" aria-label="YouTube">
+        <svg class="w-7 h-7 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.5">
+          <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2C5.12 19.5 12 19.5 12 19.5s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.37z" />
+          <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" class="text-secondary" />
+        </svg>
+      </a>
+
+    </div>
   </div>
 </section>

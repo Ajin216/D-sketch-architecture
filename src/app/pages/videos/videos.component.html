@@ -1,113 +1,126 @@
-<!-- Header Section -->
-<section class="py-24 sm:py-32 px-6 sm:px-8 bg-brand-cream border-b border-stone-100 select-none animate-fade-in-up">
+<!-- Section 1: Cinematic Page Hero -->
+<section class="py-24 sm:py-32 px-6 sm:px-8 bg-primary border-b border-secondary/15 select-none animate-fade-in-up">
   <div class="max-w-7xl mx-auto space-y-6 text-center">
-    <span class="inline-block font-sans text-xs sm:text-sm tracking-[0.4em] font-semibold text-accent-gold uppercase border-y border-accent-gold/25 py-2.5 px-6 mb-3 select-none">
-      CINEMATIC TOURS
+    <span class="inline-block font-sans text-xs sm:text-sm tracking-[0.4em] font-semibold text-secondary uppercase border-y border-secondary/25 py-2.5 px-6 mb-3">
+      CINEMATIC PORTFOLIOS
     </span>
-    <h1 class="font-serif text-5xl sm:text-6xl text-brand-charcoal font-semibold max-w-3xl mx-auto leading-[1.1]">
-      Project Walkthroughs
+    <h1 class="font-display text-5xl sm:text-6xl text-accent font-bold max-w-3xl mx-auto leading-tight">
+      Our Work in Motion
     </h1>
-    <div class="w-12 h-0.5 bg-accent-gold mx-auto my-6"></div>
-    <p class="font-sans text-stone-600 text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
-      Step inside our custom-sculpted minimalist sanctuaries through high-fidelity visual walk-throughs and cinematic spatial documentations.
+    <div class="w-16 h-px bg-secondary mx-auto"></div>
+    <p class="font-body text-accent/80 text-lg sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+      Experience the three-dimensional harmony of light, volume, and material texture inside our completed architectural commissions.
     </p>
   </div>
 </section>
 
-<!-- Videos Grid -->
-<section class="py-24 sm:py-32 px-6 sm:px-8 bg-white">
+<!-- Section 2: Video Grid -->
+<section class="py-24 sm:py-32 px-6 sm:px-8 bg-surface">
   <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
       
       @for (item of videos(); track item.id) {
-      
-      <!-- Video Card Item -->
-      <div (click)="openVideo(item)" class="group cursor-pointer space-y-6">
-        
-        <!-- Video Thumbnail Box -->
-        <div class="relative w-full aspect-[16/9] overflow-hidden border border-stone-200 transition-all duration-500 group-hover:border-accent-gold shadow-sm bg-stone-50">
-          <img [src]="item.thumbnailUrl" [alt]="item.title"
-            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+        <!-- Video Card Item -->
+        <div (click)="openVideo(item)" class="group cursor-pointer bg-primary border border-secondary/10 hover:border-secondary p-6 luxury-lift flex flex-col justify-between min-h-[460px]">
           
-          <!-- Translucent Overlay with Play Icon -->
-          <div class="absolute inset-0 bg-brand-charcoal/20 group-hover:bg-brand-charcoal/40 transition-colors duration-500 flex items-center justify-center">
-            <div class="w-14 h-14 rounded-full bg-brand-cream/90 group-hover:bg-accent-gold shadow-md flex items-center justify-center transition-all duration-300 transform group-hover:scale-110">
-              <!-- Inline Play Icon SVG -->
-              <svg class="w-6 h-6 fill-brand-charcoal stroke-brand-charcoal translate-x-0.5" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
-              </svg>
+          <div class="space-y-6">
+            <!-- Video Thumbnail Container -->
+            <div class="relative w-full aspect-[16/9] overflow-hidden border border-secondary/15 bg-surface">
+              <!-- Shimmer Skeleton Placeholder overlay -->
+              <div class="absolute inset-0 shimmer-placeholder z-0"></div>
+              
+              <img [src]="item.thumbnailUrl" [alt]="item.title"
+                   class="relative z-10 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+              
+              <!-- Translucent Overlay with Play Icon -->
+              <div class="absolute inset-0 bg-primary/30 group-hover:bg-primary/60 transition-colors duration-500 flex items-center justify-center z-20">
+                <div class="w-14 h-14 rounded-full bg-secondary text-primary shadow-lg flex items-center justify-center transition-all duration-300 transform group-hover:scale-110">
+                  <!-- Play Icon SVG -->
+                  <svg class="w-6 h-6 fill-current translate-x-0.5" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"></path>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Duration Tag -->
+              <span class="absolute bottom-3 right-3 font-sans text-[9px] tracking-widest text-secondary bg-primary/80 px-2.5 py-1 select-none z-20 font-bold border border-secondary/20">
+                {{ item.duration }}
+              </span>
+            </div>
+
+            <!-- Video Metadata -->
+            <div class="space-y-2">
+              <span class="font-sans text-[9px] tracking-[0.2em] font-semibold text-secondary uppercase block">
+                {{ item.category }}
+              </span>
+              <h3 class="font-display text-2xl text-accent font-bold leading-snug">
+                {{ item.title }}
+              </h3>
+              <p class="font-body text-accent/70 text-base leading-relaxed font-light line-clamp-3">
+                {{ item.description }}
+              </p>
             </div>
           </div>
 
-          <!-- Duration Tag -->
-          <span class="absolute bottom-3 right-3 font-sans text-[10px] tracking-widest text-brand-cream bg-brand-charcoal/80 px-2.5 py-1 select-none">
-            {{ item.duration }}
-          </span>
-        </div>
-
-        <!-- Video Card Metadata -->
-        <div class="space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="font-sans text-[10px] tracking-[0.2em] font-semibold text-accent-gold uppercase">
-              {{ item.category }}
-            </span>
+          <!-- Video Embed Note for developer references -->
+          <!-- Video embed will be added later using premium iframe feeds -->
+          
+          <div class="pt-4 border-t border-secondary/10 flex items-center justify-between text-[10px] tracking-widest text-secondary font-sans font-bold uppercase">
+            <span>PLAY WALKTHROUGH</span>
+            <span>&rarr;</span>
           </div>
-          <h3 class="font-serif text-2xl text-brand-charcoal group-hover:text-accent-gold transition-colors duration-300">
-            {{ item.title }}
-          </h3>
-          <p class="font-sans text-stone-500 text-sm leading-relaxed font-light">
-            {{ item.description }}
-          </p>
+
         </div>
-
-      </div>
-
       }
 
     </div>
   </div>
 </section>
 
-<!-- Full-Screen Interactive Video Modal Player -->
-@if (activeVideo()) {
-<div class="fixed inset-0 z-9999 flex items-center justify-center backdrop-blur-xl bg-brand-charcoal/95 p-4 sm:p-6 transition-opacity duration-300">
-  
-  <!-- Close Trigger Area -->
-  <div (click)="closeVideo()" class="absolute inset-0 cursor-default"></div>
-
-  <!-- Modal Content Card -->
-  <div class="relative w-full max-w-5xl bg-brand-cream/5 border border-stone-800 shadow-2xl p-4 sm:p-6 z-10 space-y-6 animate-fade-in-up">
+<!-- Section 3: Premium Interactive Video Modal -->
+@if (activeVideo(); as item) {
+  <div class="fixed inset-0 z-[100] flex items-center justify-center bg-primary/95 backdrop-blur-md p-4 sm:p-10 select-none animate-fade-in-up"
+       (click)="closeVideo()">
     
-    <!-- Close Icon Button -->
-    <button (click)="closeVideo()" class="absolute -top-12 right-0 sm:right-4 text-brand-cream/80 hover:text-accent-gold focus:outline-none transition-colors duration-300 p-2" aria-label="Close Video Player">
-      <svg class="w-8 h-8 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
+    <!-- Close trigger Area -->
+    <div class="absolute inset-0 cursor-default"></div>
 
-    <!-- Cinematic Video Playback Canvas -->
-    <div class="relative w-full aspect-[16/9] bg-black overflow-hidden border border-stone-800">
-      <video [src]="activeVideo()?.videoUrl" controls autoplay class="w-full h-full object-contain"></video>
-    </div>
+    <!-- Modal Content Card -->
+    <div class="relative w-full max-w-4xl bg-surface border border-secondary/20 p-6 sm:p-8 z-10 space-y-6"
+         (click)="$event.stopPropagation()">
+      
+      <!-- Close Button -->
+      <button (click)="closeVideo()" 
+              class="absolute top-4 right-4 w-10 h-10 border border-secondary/20 hover:border-secondary flex items-center justify-center text-accent/70 hover:text-secondary transition-all duration-300 cursor-pointer focus:outline-none z-[110]"
+              aria-label="Close Video Player">
+        <span class="font-sans text-xs tracking-widest uppercase">ESC</span>
+      </button>
 
-    <!-- Playback Details Panel -->
-    <div class="space-y-2 text-left">
-      <div class="flex items-center justify-between gap-4">
-        <span class="font-sans text-[10px] tracking-[0.2em] font-semibold text-accent-gold uppercase">
-          {{ activeVideo()?.category }}
-        </span>
-        <span class="font-sans text-[10px] tracking-widest text-stone-400">
-          DURATION: {{ activeVideo()?.duration }}
-        </span>
+      <!-- Video Player Canvas -->
+      <div class="relative w-full aspect-[16/9] bg-primary border border-secondary/15 overflow-hidden flex items-center justify-center">
+        <!-- Embed iframe or raw HTML5 video -->
+        <!-- Video embed will be added later — using iframe slots or highres streaming -->
+        <video [src]="item.videoUrl" controls autoplay class="w-full h-full object-contain"></video>
       </div>
-      <h2 class="font-serif text-2xl sm:text-3xl text-brand-cream font-medium">
-        {{ activeVideo()?.title }}
-      </h2>
-      <p class="font-sans text-stone-400 text-sm leading-relaxed font-light">
-        {{ activeVideo()?.description }}
-      </p>
-    </div>
 
+      <!-- Playback Details Panel -->
+      <div class="space-y-3 text-left">
+        <div class="flex items-center justify-between gap-4 border-b border-secondary/10 pb-3">
+          <span class="font-sans text-[10px] tracking-[0.2em] font-semibold text-secondary uppercase">
+            {{ item.category }}
+          </span>
+          <span class="font-sans text-[10px] tracking-widest text-accent/40 font-semibold uppercase">
+            DURATION: {{ item.duration }}
+          </span>
+        </div>
+        <h2 class="font-display text-3xl text-accent font-bold">
+          {{ item.title }}
+        </h2>
+        <p class="font-body text-accent/80 text-lg leading-relaxed font-light">
+          {{ item.description }}
+        </p>
+      </div>
+
+    </div>
   </div>
-</div>
 }
