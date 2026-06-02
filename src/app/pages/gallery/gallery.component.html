@@ -1,6 +1,6 @@
-<!-- Section 1: Page Hero & Filter Tabs -->
-<section class="py-24 sm:py-32 px-6 sm:px-8 bg-primary border-b border-secondary/15 select-none animate-fade-in-up">
-  <div class="max-w-7xl mx-auto space-y-8 text-center">
+<!-- Section 1: Page Hero & Categories Filter -->
+<section class="py-24 sm:py-32 px-6 sm:px-12 md:px-16 bg-primary border-b border-secondary/15 select-none animate-fade-in-up">
+  <div class="max-w-[1600px] mx-auto space-y-8 text-center">
     <div class="space-y-4">
       <span class="inline-block font-sans text-xs tracking-[0.4em] font-semibold text-secondary uppercase border-y border-secondary/25 py-2.5 px-6 mb-3">
         SELECTED COMMISSION ARCHIVE
@@ -53,17 +53,18 @@
   </div>
 </section>
 
-<!-- Section 2: Asymmetric Masonry Image Grid -->
-<section class="py-16 sm:py-24 px-6 sm:px-8 bg-surface">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 auto-rows-dense">
+<!-- Section 2: Widescreen Cinematic Masonry Grid -->
+<section class="py-12 px-6 sm:px-12 md:px-16 bg-primary">
+  <div class="max-w-[1600px] mx-auto">
+    <!-- Perfectly aligned uniform grid layout -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
       
       @for (item of filteredProjects(); track item.id) {
         <div (click)="openLightbox(item)" 
-             class="group flex flex-col {{ item.gridClass }} space-y-4 cursor-pointer animate-fade-in-up">
+             class="group flex flex-col space-y-4 cursor-pointer animate-fade-in-up">
           
           <!-- Image Box Container -->
-          <div class="relative w-full {{ item.aspectClass }} overflow-hidden border border-secondary/10 group-hover:border-secondary transition-all duration-500 bg-primary">
+          <div class="relative w-full aspect-[4/3] overflow-hidden border border-secondary/10 group-hover:border-secondary transition-all duration-500 bg-primary">
             <img [src]="item.imageUrl" [alt]="item.title"
                  class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
             

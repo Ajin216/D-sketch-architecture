@@ -9,25 +9,25 @@
   --color-accent: #ffffff;
   --color-surface: #2C2218;
   
-  /* Brand Typography */
-  --font-heading: 'Montserrat', sans-serif;
-  --font-sans: 'Inter', sans-serif;
-  --font-display: 'Montserrat', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  /* Brand Typography with Robust System Fallbacks */
+  --font-heading: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-cursive: 'Pinyon Script', cursive;
   
-  /* Luxury Upscaled Font Sizes for Premium Visibility & Elite UI/UX */
-  --font-size-xs: 0.95rem;         /* ~15px - High-visibility floor */
-  --font-size-sm: 1.125rem;        /* 18px */
-  --font-size-base: 1.25rem;       /* 20px */
-  --font-size-lg: 1.45rem;         /* ~23px */
-  --font-size-xl: 1.65rem;         /* ~26px */
-  --font-size-2xl: 2.0rem;         /* 32px */
-  --font-size-3xl: 2.5rem;         /* 40px */
-  --font-size-4xl: 3.125rem;       /* 50px */
-  --font-size-5xl: 4.0rem;         /* 64px */
-  --font-size-6xl: 5.0rem;         /* 80px */
-  --font-size-7xl: 6.0rem;         /* 96px */
+  /* Elite Luxury Font Sizes (Slightly Enhanced Scale for Premium Widescreen Readability) */
+  --font-size-xs: 0.85rem;         /* ~13.6px */
+  --font-size-sm: 0.975rem;        /* ~15.6px */
+  --font-size-base: 1.125rem;      /* ~18px */
+  --font-size-lg: 1.25rem;         /* ~20px */
+  --font-size-xl: 1.45rem;         /* ~23px */
+  --font-size-2xl: 1.75rem;        /* ~28px */
+  --font-size-3xl: 2.25rem;        /* ~36px */
+  --font-size-4xl: 2.75rem;        /* ~44px */
+  --font-size-5xl: 3.5rem;         /* ~56px */
+  --font-size-6xl: 4.5rem;         /* ~72px */
+  --font-size-7xl: 5.5rem;         /* ~88px */
 }
 
 body {
@@ -41,7 +41,6 @@ body {
 /* Global readable premium paragraphs */
 p {
   color: #ffffff !important;
-  font-size: 1.45rem !important; /* Elite, highly readable large typography */
   line-height: 1.8 !important;
   font-weight: 400 !important;   /* High-visibility weight on dark background */
 }
@@ -132,14 +131,14 @@ p {
   animation: shimmer 1.5s infinite linear;
 }
 
-/* Custom footer styling overrides for elegant compact sizing and light white colors */
+/* Custom footer styling overrides to preserve elegant compact standard sizing and prevent upscaling */
 footer,
 footer p,
 footer span,
 footer a,
 footer li {
   color: #ffffff !important;
-  font-size: 1.35rem !important; /* Upscaled to be a similar high-visibility size */
+  font-size: 0.875rem !important; /* Standard text-sm equivalent (14px) to freeze footer sizing */
   line-height: 1.8 !important;
 }
 
@@ -147,9 +146,10 @@ footer a:hover {
   color: var(--color-secondary) !important; /* Keep gold hover color */
 }
 
-/* Ensure the big brand title inside footer stays bold and gold */
-footer .font-sans.text-2xl {
-  font-size: 1.75rem !important;
+/* Maintain footer logo brand header size specifically */
+footer .text-2xl,
+footer span.font-sans.text-2xl {
+  font-size: 1.5rem !important;
   color: var(--color-secondary) !important;
 }
 
